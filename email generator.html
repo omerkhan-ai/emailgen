@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #33ff33;
+        }
+        textarea {
+            width: 80%;
+            height: 150px;
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #33ff33;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #33ff33;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #28cc28;
+        }
+    </style>
+</head>
+<body>
+    <h1>BOLAGEMA Email Generator</h1>
+    <textarea id="emailContent" placeholder="Type your email content here..."></textarea><br>
+    <button onclick="generateEmail()">Generate Email</button>
+    <button onclick="copyEmail()">📋 Copy Email</button>
+
+    <div id="emailPreview" style="display:none;"></div>
+
+    <script>
+        function generateEmail() {
+            let content = document.getElementById("emailContent").value;
+
+            let emailHTML = `
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#111111; color:#ffffff; font-family:Arial, sans-serif; max-width:600px; margin:0 auto; padding:20px; border-radius:5px;">
+                    <tr>
+                        <td align="center" style="font-size:24px; font-weight:bold; color:#33ff33; margin-bottom:20px;">
+                            BOLAGEMA
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:16px; line-height:1.6; padding:15px; color:#ffffff;">
+                            ${content}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="margin-top:30px; padding-top:20px; border-top:1px solid #33ff33; font-size:14px; color:#ffffff;">
+                            <p><strong>Waseem Lodhi</strong><br>
+                            Managing Partner - Bola Gema - Pakistan.<br>
+                            Senior Vice President - Sialkot Chamber of Commerce & Industry</p>
+                            <p><strong>BOLA GEMA - Pakistan</strong></p>
+                            <p>2023-25 BSCI rated B Manufacturer (27952)</p>
+                            <p>Since 2015 - FAIRTRADE CERTIFIED Sports Balls Manufacturer (33150)</p>
+                            <p>2023-2027 - FIFA LICENSEE for FIFA PRO & FIFA BASIC soccer balls.</p>
+                            <p>2024-25 - SMETA / SEDEX 4 PILLAR AUDITED.</p>
+                            <p>2024-25 - GREEN STATUS Coca Cola ASR</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding:10px;">
+                            <a href="tel:+923216141801" style="display:inline-block; padding:10px 20px; margin:5px; color:#000; background-color:#33ff33; text-decoration:none; border-radius:5px; font-weight:bold;">📞 Call / WhatsApp</a>
+                            <a href="mailto:sales@bolagema.com" style="display:inline-block; padding:10px 20px; margin:5px; color:#000; background-color:#33ff33; text-decoration:none; border-radius:5px; font-weight:bold;">📧 Email Us</a>
+                            <a href="https://www.bolagema.com" style="display:inline-block; padding:10px 20px; margin:5px; color:#000; background-color:#33ff33; text-decoration:none; border-radius:5px; font-weight:bold;">🌐 Visit Website</a>
+                            <a href="https://vimeo.com/680961481" style="display:inline-block; padding:10px 20px; margin:5px; color:#000; background-color:#33ff33; text-decoration:none; border-radius:5px; font-weight:bold;">🎥 Fairtrade Video</a>
+                        </td>
+                    </tr>
+                </table>
+            `;
+
+            document.getElementById("emailPreview").innerHTML = emailHTML;
+            document.getElementById("emailPreview").style.display = "block";
+        }
+
+        function copyEmail() {
+            let emailPreview = document.getElementById("emailPreview");
+
+            if (!emailPreview.innerHTML.trim()) {
+                alert("Please generate the email first!");
+                return;
+            }
+
+            let range = document.createRange();
+            range.selectNode(emailPreview);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+
+            alert("Email copied! Paste it into Gmail.");
+        }
+    </script>
+</body>
+</html>
