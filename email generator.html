@@ -32,7 +32,7 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin: 5px;
         }
         button:hover {
             background-color: #28cc28;
@@ -52,23 +52,29 @@
             let content = document.getElementById("emailContent").value;
 
             let emailHTML = `
-                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color:#111111; color:#ffffff; font-family:Arial, sans-serif; max-width:600px; margin:0 auto; padding:20px; border-radius:5px;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" 
+                    style="background-color:#111111; color:#ffffff; font-family:Arial, sans-serif; max-width:600px; margin:0 auto; padding:20px; border-radius:5px;">
+                    
                     <tr>
-                        <td align="center" style="font-size:24px; font-weight:bold; color:#33ff33; margin-bottom:20px;">
+                        <td align="center" style="font-size:24px; font-weight:bold; color:#33ff33; padding-bottom:20px;">
                             BOLAGEMA
                         </td>
                     </tr>
+                    
                     <tr>
-                        <td style="font-size:16px; line-height:1.6; padding:15px; color:#ffffff;">
-                            ${content}
+                        <td style="font-size:16px; line-height:1.6; padding:15px 25px; color:#ffffff; text-align:justify;">
+                            ${content.replace(/\n/g, "<br>")} <!-- Converts new lines to <br> for Gmail -->
                         </td>
                     </tr>
+                    
                     <tr>
-                        <td align="center" style="margin-top:30px; padding-top:20px; border-top:1px solid #33ff33; font-size:14px; color:#ffffff;">
+                        <td align="center" style="padding-top:20px; border-top:1px solid #33ff33; font-size:14px; color:#ffffff;">
                             <p><strong>Waseem Lodhi</strong><br>
                             Managing Partner - Bola Gema - Pakistan.<br>
                             Senior Vice President - Sialkot Chamber of Commerce & Industry</p>
+                            
                             <p><strong>BOLA GEMA - Pakistan</strong></p>
+                            
                             <p>2023-25 BSCI rated B Manufacturer (27952)</p>
                             <p>Since 2015 - FAIRTRADE CERTIFIED Sports Balls Manufacturer (33150)</p>
                             <p>2023-2027 - FIFA LICENSEE for FIFA PRO & FIFA BASIC soccer balls.</p>
@@ -76,6 +82,7 @@
                             <p>2024-25 - GREEN STATUS Coca Cola ASR</p>
                         </td>
                     </tr>
+                    
                     <tr>
                         <td align="center" style="padding:10px;">
                             <a href="tel:+923216141801" style="display:inline-block; padding:10px 20px; margin:5px; color:#000; background-color:#33ff33; text-decoration:none; border-radius:5px; font-weight:bold;">📞 Call / WhatsApp</a>
@@ -84,6 +91,7 @@
                             <a href="https://vimeo.com/680961481" style="display:inline-block; padding:10px 20px; margin:5px; color:#000; background-color:#33ff33; text-decoration:none; border-radius:5px; font-weight:bold;">🎥 Fairtrade Video</a>
                         </td>
                     </tr>
+                    
                 </table>
             `;
 
